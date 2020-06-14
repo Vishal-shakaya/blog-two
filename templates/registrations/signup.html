@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+
+{% block navbar %}
+<div class="login-center-signup">
+  <div class="container">
+    <div class="col-5">
+      <div class="card">
+
+  <!-- Card body -->
+  <div class="card-body border-fade  z-depth-2">
+              
+    <!-- Material form register -->
+    <form method="post" accept-charset="utf-8">
+{% csrf_token %}
+<div class="text-default">
+    <p class="h4 text-center py-4 ">Sign up</p>
+    {% if form.errors %}
+    <div class="alert alert-dismissible fade show" role="alert">
+        <p class=" alert-danger text-sm-center z-depth-1 rounded-sm">invalid username or passowrd</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span class="text-danger" aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+</div>
+     
+
+      <!-- Material input text -->
+      <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="id_username" class="form-control" name="username"required="">
+        <label for="materialFormCardNameEx" class="font-weight-light">Username</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+        <input type="password" id="materialFormCardConfirmEx" class="form-control" name="password1" required="">
+        <label for="materialFormCardConfirmEx" class="font-weight-light">Password</label>
+      </div>
+
+      <!-- Material input password -->
+      <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input type="password" id="materialFormCardPasswordEx" class="form-control" name="password2"required="">
+        <label for="materialFormCardPasswordEx" class="font-weight-light">Conform password</label>
+      </div>
+
+       <div class="text-center py-4 mt-3">
+        <button class="btn btn-cyan" type="submit">Register</button>
+      </div>
+
+      <div>
+        <p class="blue-grey-text">If already signup here <a href="{% url 'login' %}">LOGIN</a></p>
+      </div>
+
+    </form>
+  </div>
+</div>
+<!-- Card -->
+    </div>
+  </div>
+</div>
+{% endblock %}

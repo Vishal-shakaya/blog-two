@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+<!-- 
+ {% block extra_content %}
+  <div class="" style="background-color: white">
+        {{form.media}}
+   </div> 
+{% endblock extra_content %} -->
+{% block navbar %}
+<div class="container">
+    <h1 class="text-center text-capitalize text-dark-60">  <small class="">🤔😶😶{{user}}</small></h1>
+
+    <div class="">
+        <form method="post" enctype="multipart/form-data" accept-charset="utf-8">
+            {% csrf_token %}
+            <section class="form-elegant">
+                <!--Form without header-->
+                <div class="card">
+                    <div class="card-body mx-4">
+                        <!--Header-->
+                        <!--     <div class="text-center">
+        <h3 class="dark-grey-text mb-5"><strong></strong></h3>
+      </div> -->
+                        <!--Body-->
+                        <div class="md-form ">
+                            <input name="title" type="text" id="Form-email1" class="form-control">
+                            <label for="Form-email1" name="title">title</label>
+                        </div>
+                        <div class="md-form pb-3">
+                    
+                            <textarea col="50" rows="20" id="0" name="content" id="Form-pass1" class="form-control border-0"></textarea>
+                            <label>Content</label>
+                        </div>
+                        <input class="btn btn btn-sm btn-danger z-depth-1" type="file" name="image" id="id_image">
+                        <div class="text-center mb-3">
+                          
+                        </div>
+                          <button type="submit" class="btn btn-warning z-depth-2">add Post</button>
+                    </div>
+                </div>
+                <!--/Form without header-->
+            </section>
+        </form>
+    </div>
+</div>
+{% endblock navbar %}

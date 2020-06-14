@@ -1,0 +1,12 @@
+<form method="post" accept-charset="utf-8">
+    {% csrf_token %}
+<div class=" col-sm-4 form-group shadow-textarea">
+    <label for="exampleFormControlTextarea6">Comments : {{comments.count}}</label>
+    <textarea name="content" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
+  <div class="text-right">
+       	    <input class="btn btn-primary btn-sm btn-rounded text-right " type="submit" value="comment">
+       </div>
+</div>
+       
+</form>
+

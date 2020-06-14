@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+    <div class="login-center ">
+    	<div lass="container">
+ <div class="col-lg-4 ">
+<!-- Material form subscription -->
+<div class="card border-fade z-depth-2">
+
+    <h5 class="card-header  black-text text-center py-4">
+        <strong class="text-default">feelsafe security</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5">
+
+        <!-- Form -->
+        <form class="text-center"  method="POST">
+        	 {% csrf_token %}
+
+            <p>
+               <div>
+               <h4> <p class="text-center">Login</p></h4>
+               </div>
+            </p>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+            <!-- Name -->
+            <div class="md-form mt-3">
+                <input type="text" id="materialSubscriptionFormPasswords" class="form-control" name="username">
+                <label for="materialSubscriptionFormPasswords">Username</label>
+            </div>
+
+            <!-- E-mai -->
+            <div class="md-form">
+                <input type="password" id="materialSubscriptionFormEmail" class="form-control" name="password">
+                <label for="materialSubscriptionFormEmail">Password</label>
+            </div>
+
+            <!-- Sign in button -->
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">login</button>
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form subscription --> 	
+ </div>
+</div>
+    </div>
+{% endblock navbar %}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title></title>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+
+{% block extra_content %}
+    
+{% endblock extra_content %}
+
+</head>
+<body class="">
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=172725803951076&autoLogAppEvents=1" nonce="ULRpiNg0"></script>
+
+
+<!--Navbar -->
+<div class="">
+  <div class="">
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+  <a class="navbar-brand" href="{% url 'Post:post_list' %}" >feelsafe security</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+     
+      {% if not user.is_authenticated %}
+           <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      
+      {% endif %}
+     
+    </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      
+
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="{% url 'signup' %}">
+          <i class="far fa-grin-alt"></i>
+         signup
+        </a>
+      </li>
+            {% if user.is_authenticated %}
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{user}}
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+          aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="{% url 'Post:create' %}">Add Post</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+          <a class="dropdown-item" href="{% url 'Post:post_list' %}">Posts</a>
+        </div>
+       </li>
+{% endif %}
+</ul>
+</div>
+</nav>
+</div>
+</div>
+
+   {% if messages %}  
+<div class="alert alert-dismissible fade show" role="alert">
+    <ul class="messages"style="list-style-type: none">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><p class=" alert">{{ message }}</p></li>
+    {% endfor %}
+    </ul>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endif %}
+
+
+<div class="button"><a class="show" href="#">feelsafe</a></div>
+
+<div>
+  
+  {% block navbar %}
+      
+  {% endblock navbar %}
+</div>
+
+
+<!-- JQuery -->
+<script src="{% static 'pannel.js' %}"></script>
+<script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!--  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.content-markdown').each(function(){
+       var content = $(this).text()
+       console.log(content)
+       var markdown = marked(content)
+       console.log(markdown)
+       $(this).html(markdown)
+    }) 
+  })
+
+</script>  -->
+<script>var editor = new MediumEditor('.editable');</script>
+</body>
+</html>
